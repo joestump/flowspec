@@ -1,10 +1,15 @@
 # flowspec
 
+![CI](https://github.com/joestump/flowspec/actions/workflows/ci.yml/badge.svg)
+[![Go Reference](https://pkg.go.dev/badge/github.com/joestump/flowspec.svg)](https://pkg.go.dev/github.com/joestump/flowspec)
+
 **A YAML DSL for defining and executing Temporal workflows.**
 
 Declarative workflow definitions that compile to Temporal workflows. Define pipelines as YAML, execute them with a generic Go interpreter. Designed for AI agent orchestration but general-purpose.
 
 > **Status:** Early development
+
+**[Documentation](https://joestump.github.io/flowspec/)** | **[pkg.go.dev](https://pkg.go.dev/github.com/joestump/flowspec)**
 
 ## Example
 
