@@ -1,0 +1,23 @@
+name: morning-briefing
+trigger:
+  cron: "0 8 * * *"
+steps:
+  - name: ingest
+    agent: ingestor
+    config:
+      sources: [hn, rss-arstechnica, rss-lobsters]
+  - name: read-and-score
+    agent: reader
+    input: "$prev.items"
+    config:
+      max_items: 20
+  - name: compose
+    agent: editor
+    input: "$prev.scored_items"
+    config:
+      layout: editorial-hero
+  - name: deliver
+    agent: broadcaster
+    input: "$prev.briefing"
+    config:
+      channels: [telegram, web]

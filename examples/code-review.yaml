@@ -1,0 +1,20 @@
+name: code-review
+trigger:
+  event: gitea.pull_request.opened
+steps:
+  - name: fetch-diff
+    agent: watcher
+    config:
+      action: get_pr_diff
+  - name: review
+    agent: reviewer
+    input: "$prev.diff"
+    config:
+      runtime: claude-code
+      model: claude-opus-4-6
+      checks: [security, correctness, style]
+  - name: post-review
+    agent: broadcaster
+    input: "$prev.review"
+    config:
+      channels: [gitea-comment, telegram]
