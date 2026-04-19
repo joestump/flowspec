@@ -9,7 +9,7 @@ Declarative workflow definitions that compile to Temporal workflows. Define pipe
 
 > **Status:** Early development
 
-**[Documentation](https://joestump.github.io/flowspec/)** | **[pkg.go.dev](https://pkg.go.dev/github.com/joestump/flowspec)**
+**[Documentation](https://joestump.github.io/flowspec/docs/intro)** | **[pkg.go.dev](https://pkg.go.dev/github.com/joestump/flowspec)**
 
 ## Example
 

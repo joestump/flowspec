@@ -4,8 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "docs/**"
-      - "_config.yml"
+      - "docs-site/**"
 
 permissions:
   contents: read
@@ -21,12 +20,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/jekyll-build-pages@v1
+      - uses: actions/setup-node@v4
         with:
-          source: ./docs
-          destination: ./_site
+          node-version: 22
+          cache: npm
+          cache-dependency-path: docs-site/package-lock.json
+      - name: Install dependencies
+        working-directory: docs-site
+        run: npm ci
+      - name: Build
+        working-directory: docs-site
+        run: npm run build
       - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs-site/build
 
   deploy:
     environment:

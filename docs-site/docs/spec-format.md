@@ -1,5 +1,5 @@
 ---
-layout: default
+sidebar_position: 2
 title: Spec Format Reference
 ---
 
